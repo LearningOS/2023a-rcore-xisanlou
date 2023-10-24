@@ -4,6 +4,10 @@
 use core::fmt::{Write, Result, Arguments};
 
 mod lang_items;
+mod sbi;
+
+core::arch::global_asm!
+
 
 const SYSCALL_EXIT: usize = 93;
 
@@ -60,8 +64,9 @@ macro_rules! println {
 #[no_mangle]
 extern "C" fn _start() {
     //loop{};
-    println!("Hello, world! xisanlou");
-    sys_exit(9);
+    //println!("Hello, world! xisanlou");
+    //sys_exit(9);
+    sbi::shutdown();
 }
 
 //fn main() {
